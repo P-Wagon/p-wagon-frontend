@@ -20,7 +20,7 @@ const Homepage = () => {
 
   return (
     <>
-      <div className="flex flex-col h-screen items-center justify-center [background:radial-gradient(150%_150%_at_50%_10%,#253733_50%,#00D094_100%)]">
+      <div className="flex flex-col h-screen items-center justify-center [background:radial-gradient(150%_150%_at_50%_10%,#253733_30%,#000000_100%)]">
         <h1 className="text-4xl font-bold text-white mt-8 items-center">
           PWagon
         </h1>{" "}
@@ -30,23 +30,23 @@ const Homepage = () => {
             <thead>
               <tr className="bg-[#00D094] text-[#242830] uppercase text-sm leading-normal">
                 <th className="p-4 text-center font-bold">S.NO</th>
-                {/* <th className="py-3 px-6 text-left">Crime Description</th> */}
+                <th className="py-3 px-6 text-left">Crime Description</th>
                 <th className="p-4 text-center font-bold">License Plate Number</th>
-                {/* <th className="py-3 px-6 text-center">Other Features</th> */}
+                <th className="py-3 px-6 text-center">Other Features</th>
               </tr>
             </thead>
             <tbody className="bg-black text-white text-sm font-light">
               <tr className="items-center justify-center">
                 <td className="py-3 px-6 text-left whitespace-nowrap">1</td>
-                {/* <td className="py-3 px-6 text-left whitespace-nowrap">John Doe</td> */}
+                <td className="py-3 px-6 text-left whitespace-nowrap">John Doe</td>
                 <td className="py-3 px-6 text-center">TN 01 AN 4545</td>
-                {/* <td className="py-3 px-6 text-center">john@example.com</td> */}
+                <td className="py-3 px-6 text-center">john@example.com</td>
               </tr>
               <tr className="items-center justify-center">
                 <td className="py-3 px-6 text-left whitespace-nowrap">2</td>
-                {/* <td className="py-3 px-6 text-left whitespace-nowrap">Jane Smith</td> */}
+                <td className="py-3 px-6 text-left whitespace-nowrap">Jane Smith</td>
                 <td className="py-3 px-6 text-center">KA 23 FK 2045</td>
-                {/* <td className="py-3 px-6 text-center">jane@example.com</td> */}
+                <td className="py-3 px-6 text-center">jane@example.com</td>
               </tr>
             </tbody>
           </table>
@@ -55,7 +55,7 @@ const Homepage = () => {
         <div className="flex flex-col">
           <button
             onClick={logOut}
-            className="px-4 py-2 bg-transparent border border-green-400 text-white rounded-md"
+            className="px-4 py-2 bg-transparent border border-[#00D094] text-white rounded-md"
           >
             SIGN OUT
           </button>
