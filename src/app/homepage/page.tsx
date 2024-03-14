@@ -31,23 +31,23 @@ const Homepage = () => {
             <thead>
               <tr className="bg-[#00D094] text-[#242830] uppercase text-sm leading-normal">
                 <th className="p-4 text-center font-bold">S.NO</th>
-                <th className="py-3 px-6 text-left">Crime Description</th>
+                {/* <th className="py-3 px-6 text-left">Crime Description</th> */}
                 <th className="p-4 text-center font-bold">License Plate Number</th>
-                <th className="py-3 px-6 text-center">Other Features</th>
+                {/* <th className="py-3 px-6 text-center">Other Features</th> */}
               </tr>
             </thead>
             <tbody className="bg-black text-white text-sm font-light">
               <tr className="items-center justify-center">
                 <td className="py-3 px-6 text-left whitespace-nowrap">1</td>
-                <td className="py-3 px-6 text-left whitespace-nowrap">John Doe</td>
+                {/* <td className="py-3 px-6 text-left whitespace-nowrap">John Doe</td> */}
                 <td className="py-3 px-6 text-center">TN 01 AN 4545</td>
-                <td className="py-3 px-6 text-center">john@example.com</td>
+                {/* <td className="py-3 px-6 text-center">john@example.com</td> */}
               </tr>
               <tr className="items-center justify-center">
                 <td className="py-3 px-6 text-left whitespace-nowrap">2</td>
-                <td className="py-3 px-6 text-left whitespace-nowrap">Jane Smith</td>
+                {/* <td className="py-3 px-6 text-left whitespace-nowrap">Jane Smith</td> */}
                 <td className="py-3 px-6 text-center">KA 23 FK 2045</td>
-                <td className="py-3 px-6 text-center">jane@example.com</td>
+                {/* <td className="py-3 px-6 text-center">jane@example.com</td> */}
               </tr>
             </tbody>
           </table>
