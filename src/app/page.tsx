@@ -60,17 +60,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// Add CSS for loading screen (optional)
-// .loading-screen {
-//   position: fixed; /* Keep it on top of content */
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-//   display: flex; /* Center content vertically and horizontally */
-//   justify-content: center;
-//   align-items: center;
-//   z-index: 999; /* Ensure it's on top of other elements */
-// }
