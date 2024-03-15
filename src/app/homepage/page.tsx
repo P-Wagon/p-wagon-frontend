@@ -3,7 +3,8 @@ import { signOut } from "firebase/auth";
 import auth from "../firebase/config";
 import "./page.css";
 import ModalFormInput from "../../../components/modalForm";
-
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Homepage: React.FC = () => {
   const [user, setUser] = useState<any | null>(null);
@@ -38,15 +39,14 @@ const Homepage: React.FC = () => {
           <div className="flex flex-col">
             <button
               onClick={logOut}
-              className="px-4 py-2 bg-transparent border border-[#00D094] text-white rounded-md absolute top-24 right-5 sm:right-10"
+              className="px-4 py-2 bg-transparent text-red-600 rounded-md absolute top-24 right-5 flex items-center space-x-2"
             >
-              SIGN OUT
+              <FontAwesomeIcon icon={faSignOutAlt} className="text-xl"/>
             </button>
-            </div>
-          <ModalFormInput/ >
           </div>
-    </Fragment>
-
+          <ModalFormInput />
+        </div>
+      </Fragment>
     </>
   );
 };
