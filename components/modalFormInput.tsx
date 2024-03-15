@@ -30,6 +30,11 @@ function ModalFormInput({ onSubmit }: ErrorMessageProps) {
     setIsHovered(!isHovered);
   };
 
+  const validatePlateNo = (value: string) => {
+    const plateNoRegex = /^[A-Za-z]{2}\d{2}[A-Za-z]{2}\d{4}$/;
+    return plateNoRegex.test(value);
+  };
+
   const handleSubmit = () => {
     if (description && color && plateNo && estimatedTime) {
       const postData = {
@@ -43,7 +48,6 @@ function ModalFormInput({ onSubmit }: ErrorMessageProps) {
         .post("https://p-wagon-backend.vercel.app/api/postAlert", postData)
         .then((response) => {
           console.log("Success:", response.data);
-          // Call the onSubmit prop with the form values if you still need to pass the data to the parent component
           onSubmit(postData);
         })
         .catch((error) => {
@@ -75,12 +79,22 @@ function ModalFormInput({ onSubmit }: ErrorMessageProps) {
         type="text"
         value={plateNo}
         onChange={(e) => setplateNo(e.target.value)}
+        isInvalid={plateNo.length > 0 && !validatePlateNo(plateNo)}
       />
-      <FormErrorMessage>This is a required field.</FormErrorMessage>
+      <FormErrorMessage>
+        {plateNo.length > 0 && !validatePlateNo(plateNo)
+          ? "Invalid License Plate Number format"
+          : "This is a required field."}
+      </FormErrorMessage>
+      <FormErrorMessage>
+        {plateNo.length > 0 && !validatePlateNo(plateNo)
+          ? "Invalid License Plate Number format"
+          : "This is a required field."}
+      </FormErrorMessage>
 
-      <FormLabel mt={4}>Estimated Time</FormLabel>
+      <FormLabel mt={4}>Last Known Date & Time</FormLabel>
       <Input
-        type="time"
+        type="datetime-local"
         value={estimatedTime}
         onChange={(e) => setEstimatedTime(e.target.value)}
       />
@@ -95,7 +109,7 @@ function ModalFormInput({ onSubmit }: ErrorMessageProps) {
           border: "1px solid yellow",
           background: isHovered ? "yellow" : "transparent",
           color: isHovered ? "black" : "white",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         SUBMIT
