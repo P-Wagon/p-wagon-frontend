@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { signOut } from "firebase/auth";
 import auth from "../firebase/config";
+import BasicUsage from "../../../components/formModal";
+
 
 const Homepage = () => {
   const [user, setUser] = useState<any | null>(null);
@@ -61,7 +63,7 @@ const Homepage = () => {
             SIGN OUT
           </button>
         </div>
-
+      <BasicUsage/ >
       </div>
     </>
   );
