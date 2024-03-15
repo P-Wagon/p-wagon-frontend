@@ -2,7 +2,8 @@ import React, { useState, useEffect, Fragment } from "react";
 import { signOut } from "firebase/auth";
 import auth from "../firebase/config";
 import "./page.css";
-import AlertForm from "../../../components/AlertForm";
+import ModalFormInput from "../../../components/modalForm";
+
 
 const Homepage: React.FC = () => {
   const [user, setUser] = useState<any | null>(null);
@@ -41,13 +42,11 @@ const Homepage: React.FC = () => {
             >
               SIGN OUT
             </button>
-            <button className="text-white bg-blue-700 hover:bg-blue-500 focus:outline-none font-bold text-md rounded-lg px-5 py-2.5 text-canter" onClick={() => setShowModal(true)}>
-              SEND ALERT
-            </button>
+            </div>
+          <ModalFormInput/ >
           </div>
-          <AlertForm isVisible={showModal} onClose={() => setShowModal(false)} />
-        </div>
-      </Fragment>
+    </Fragment>
+
     </>
   );
 };
