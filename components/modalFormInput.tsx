@@ -62,7 +62,11 @@ function ModalFormInput({ onSubmit }: ErrorMessageProps) {
       <Input
         type="text"
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={(e) =>
+          setDescription(
+            e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1)
+          )
+        }
       />
       <FormErrorMessage>This is a required field.</FormErrorMessage>
 
@@ -70,7 +74,10 @@ function ModalFormInput({ onSubmit }: ErrorMessageProps) {
       <Input
         type="text"
         value={color}
-        onChange={(e) => setColor(e.target.value)}
+        onChange={(e) => {
+          const inputValue = e.target.value;
+          setColor(inputValue.charAt(0).toUpperCase() + inputValue.slice(1));
+        }}
       />
       <FormErrorMessage>This is a required field.</FormErrorMessage>
 
@@ -78,7 +85,7 @@ function ModalFormInput({ onSubmit }: ErrorMessageProps) {
       <Input
         type="text"
         value={plateNo}
-        onChange={(e) => setplateNo(e.target.value)}
+        onChange={(e) => setplateNo(e.target.value.toUpperCase())}
         isInvalid={plateNo.length > 0 && !validatePlateNo(plateNo)}
       />
       <FormErrorMessage>
@@ -88,7 +95,7 @@ function ModalFormInput({ onSubmit }: ErrorMessageProps) {
       </FormErrorMessage>
       <FormErrorMessage>
         {plateNo.length > 0 && !validatePlateNo(plateNo)
-          ? "Invalid License Plate Number format"
+          ? "Invalid License Plate Number Format"
           : "This is a required field."}
       </FormErrorMessage>
 
