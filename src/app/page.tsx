@@ -35,17 +35,22 @@ const Home = () => {
   return (
     <>
       {isLoading ? (
-        <div className="h-screen flex items-center justify-center [background:radial-gradient(150%_150%_at_50%_10%,#000_40%,#253733_100%)]">
-          <p>Loading...</p>
+        <div className="flex flex-col items-center justify-center h-screen w-screen bg-[#000B18] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] text-white">
+        <p>Loading...</p>
         </div>
       ) : user ? (
         <Homepage />
       ) : (
-        <div className="flex flex-col items-center justify-center h-screen [background:radial-gradient(150%_150%_at_50%_10%,#253733_50%,#00D094_100%)]">
-          <h1 className="text-4xl font-bold text-white pwagon-font">
-            PWagon
-          </h1>
-          <div className="mt-4">
+        <div className="flex flex-col items-center justify-center h-screen w-screen bg-[#000B18] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+          <div className="bg-black w-full text-center py-4 absolute top-0">
+            <h1
+              className="text-4xl font-bold text-white pwagon-font"
+              style={{ fontFamily: "ActionIs" }}
+            >
+              PWagon
+            </h1>{" "}
+          </div>
+          <div className="">
             <button
               onClick={signInWithGoogle}
               className="px-4 py-2 bg-transparent border-2 border-[#00D094] text-white rounded-md"
