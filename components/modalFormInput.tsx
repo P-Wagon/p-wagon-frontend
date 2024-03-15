@@ -36,8 +36,10 @@ function ModalFormInput({ onSubmit }: ErrorMessageProps) {
   };
 
   const handleSubmit = () => {
+    const rpi_id = "myRPI";
     if (description && color && plateNo && estimatedTime) {
       const postData = {
+        rpi_id: rpi_id,
         description: description,
         color: color,
         plateNo: plateNo,
