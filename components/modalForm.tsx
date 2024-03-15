@@ -11,7 +11,7 @@ import {
   } from '@chakra-ui/react'
   
 import { useState, ChangeEvent } from 'react';
-import ModalFormInput from './ModalFormInput';
+import ModalFormInput from './modalFormInput';
   
   function ModalForm() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,7 +25,7 @@ import ModalFormInput from './ModalFormInput';
       <>
         <Button onClick={onOpen}>Send Alert</Button>
         <div className="absolute inset-0">
-          <Modal  isOpen={isOpen} onClose={onClose}>
+          <Modal  isOpen={isOpen} onClose={onClose} isCentered>
             <ModalOverlay />
             <ModalContent>
               <ModalHeader>Send Alert</ModalHeader>
