@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { signOut } from "firebase/auth";
 import auth from "../firebase/config";
-import "./page.css";
 import ModalFormInput from "../../../components/modalForm";
 import CrimesTable from "../../../components/dataTable";
 import { Icon } from "@chakra-ui/react";
