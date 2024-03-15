@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'ActionIs';
+    src: url('/fonts/action-is.regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .pwagon-font {
+    font-family: 'ActionIs', sans-serif !important;
+  }
