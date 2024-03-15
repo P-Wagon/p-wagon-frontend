@@ -1,11 +1,11 @@
-"use client"
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { signOut } from "firebase/auth";
 import auth from "../firebase/config";
-import BasicUsage from "../../../components/formModal";
+import "./page.css";
+import ModalFormInput from "../../../components/modalForm";
 
 
-const Homepage = () => {
+const Homepage: React.FC = () => {
   const [user, setUser] = useState<any | null>(null);
   useEffect(() => {
     auth.onAuthStateChanged((user: any) => {
@@ -21,50 +21,32 @@ const Homepage = () => {
     await signOut(auth);
   };
 
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <>
-      <div className="flex flex-col h-screen items-center justify-center [background:radial-gradient(150%_150%_at_50%_10%,#253733_30%,#000000_100%)]">
-        <h1 className="text-4xl font-bold text-white mt-8 items-center">
-          PWagon
-        </h1>{" "}
-        
-        <div className="bg-white shadow-md rounded my-6 items-center justify-center">
-          <table className="min-w-max w-full table-auto">
-            <thead>
-              <tr className="bg-[#00D094] text-[#242830] uppercase text-sm leading-normal">
-                <th className="p-4 text-center font-bold">S.NO</th>
-                <th className="py-3 px-6 text-left">Crime Description</th>
-                <th className="p-4 text-center font-bold">License Plate Number</th>
-                <th className="py-3 px-6 text-center">Other Features</th>
-              </tr>
-            </thead>
-            <tbody className="bg-black text-white text-sm font-light">
-              <tr className="items-center justify-center">
-                <td className="py-3 px-6 text-left whitespace-nowrap">1</td>
-                <td className="py-3 px-6 text-left whitespace-nowrap">John Doe</td>
-                <td className="py-3 px-6 text-center">TN 01 AN 4545</td>
-                <td className="py-3 px-6 text-center">john@example.com</td>
-              </tr>
-              <tr className="items-center justify-center">
-                <td className="py-3 px-6 text-left whitespace-nowrap">2</td>
-                <td className="py-3 px-6 text-left whitespace-nowrap">Jane Smith</td>
-                <td className="py-3 px-6 text-center">KA 23 FK 2045</td>
-                <td className="py-3 px-6 text-center">jane@example.com</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <Fragment>
+        <div className="flex flex-col items-center justify-center h-screen w-screen bg-[#000B18] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+          <div className="bg-black w-full text-center py-4 absolute top-0">
+            <h1
+              className="text-4xl font-bold text-white pwagon-font"
+              style={{ fontFamily: "ActionIs" }}
+            >
+              PWagon
+            </h1>{" "}
+          </div>
+          <div className="flex flex-col">
+            <button
+              onClick={logOut}
+              className="px-4 py-2 bg-transparent border border-[#00D094] text-white rounded-md absolute top-24 right-5 sm:right-10"
+            >
+              SIGN OUT
+            </button>
+            </div>
+          <ModalFormInput/ >
+          </div>
+    </Fragment>
 
-        <div className="flex flex-col">
-          <button
-            onClick={logOut}
-            className="px-4 py-2 bg-transparent border border-[#00D094] text-white rounded-md"
-          >
-            SIGN OUT
-          </button>
-        </div>
-      <BasicUsage/ >
-      </div>
     </>
   );
 };

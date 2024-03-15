@@ -13,7 +13,7 @@ type ErrorMessageProps = {
     onSubmit: (values: { description: string; color: string; plateNo: string; estimatedTime: string }) => void;
 };
   
-function ErrorMessage({ onSubmit }: ErrorMessageProps) {
+function ModalFormInput({ onSubmit }: ErrorMessageProps) {
     const [description, setDescription] = useState('');
     const [color, setColor] = useState('');
     const [plateNo, setplateNo] = useState('');
@@ -65,5 +65,5 @@ function ErrorMessage({ onSubmit }: ErrorMessageProps) {
     )
   }
   
-export default ErrorMessage;
+export default ModalFormInput;
   
