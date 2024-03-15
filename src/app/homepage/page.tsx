@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect, Fragment } from "react";
 import { signOut } from "firebase/auth";
 import auth from "../firebase/config";
