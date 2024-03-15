@@ -1,11 +1,10 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { signOut } from 'firebase/auth';
-import auth from '../firebase/config';
-import './page.css';
-import ModalFormInput from '../../../components/modalForm';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import BasicTable from '../../../components/basicTable';
+import React, { useState, useEffect, Fragment } from "react";
+import { signOut } from "firebase/auth";
+import auth from "../firebase/config";
+import "./page.css";
+import ModalFormInput from "../../../components/modalForm";
+import CrimesTable from "../../../components/dataTable";
+import axios from "axios";
 
 const Homepage: React.FC = () => {
   const [user, setUser] = useState<any | null>(null);
@@ -26,6 +25,9 @@ const Homepage: React.FC = () => {
 
   const [showModal, setShowModal] = useState(false);
 
+  
+  
+
   return (
     <>
       <Fragment>
@@ -35,6 +37,9 @@ const Homepage: React.FC = () => {
               PWagon
             </h1>{' '}
           </div>
+          <div className="text-gray-50">
+            <CrimesTable/>
+          </div>
           <div className="flex flex-col">
             <button
               onClick={logOut}
@@ -42,6 +47,8 @@ const Homepage: React.FC = () => {
             >
               <FontAwesomeIcon icon={faSignOutAlt} className="text-xl" />
             </button>
+            <ModalFormInput/ >
+            </div>
           </div>
           {/* <BasicTable /> */}
           <ModalFormInput />

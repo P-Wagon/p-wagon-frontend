@@ -67,5 +67,3 @@ function ModalForm() {
     </>
   );
 }
-
-export default ModalForm;
