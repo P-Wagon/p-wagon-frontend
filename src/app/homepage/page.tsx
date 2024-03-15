@@ -24,9 +24,6 @@ const Homepage: React.FC = () => {
 
   const [showModal, setShowModal] = useState(false);
 
-  
-  
-
   return (
     <>
       <Fragment>
@@ -40,21 +37,21 @@ const Homepage: React.FC = () => {
             </h1>{" "}
           </div>
           <div className="text-gray-50">
-            <CrimesTable/>
+            <CrimesTable />
           </div>
           <div className="flex flex-col">
             <button
               onClick={logOut}
-              className="px-4 py-2 bg-transparent border border-[#00D094] text-white rounded-md absolute top-24 right-5 sm:right-10"
+              className="px-4 py-2 bg-transparent border-1 border-[#00D094] text-white rounded-md absolute top-24 right-5 sm:right-10"
             >
               SIGN OUT
             </button>
-            <ModalFormInput/ >
+            <div className="absolute top-24 left-5 sm:left-10">
+              <ModalFormInput />
             </div>
-          
           </div>
-    </Fragment>
-
+        </div>
+      </Fragment>
     </>
   );
 };
