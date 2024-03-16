@@ -39,8 +39,10 @@ interface Crimes {
 }
 
 const CrimesTable: React.FC = () => {
+  const [crimeIds, setCrimeIds] = useState<string[]>([]);
   const [crimes, setCrimes] = useState<CrimeRecord[]>([]);
   const [loading, setLoading] = useState(false);
+  const [crimeStatusus, setCrimeStatuses] = useState<boolean[]>([]);
 
   const fetchCrimes = async () => {
     try {
@@ -48,6 +50,7 @@ const CrimesTable: React.FC = () => {
       const response = await axios.get<Crimes>(
         "https://p-wagon-backend.vercel.app/api/fetchCrimes"
       );
+      setCrimeIds(Object.keys(response.data));
       const crimesArray = Object.values(response.data);
       setCrimes(crimesArray);
       setLoading(false);
@@ -59,11 +62,48 @@ const CrimesTable: React.FC = () => {
 
   useEffect(() => {
     fetchCrimes();
+    setCrimeStatuses(crimes.map((crime) => crime.status));
   }, []);
 
   const handleReload = () => {
     fetchCrimes();
   };
+
+  const handleArchiveCrime = async ( crimeId: string, index: number ) => {
+    if (crimeStatusus[index]) {
+      try {
+        const response = await axios.post(
+          "https://p-wagon-backend.vercel.app/api/archiveCrime",
+          { crimeId }
+          );
+          if (response.status === 200) {
+            const index = crimeIds.indexOf(crimeId);
+            const newStatuses = [...crimeStatusus];
+            newStatuses[index] = false;
+            setCrimeStatuses(newStatuses);
+            console.log("Crime archived successfully")
+          }
+        } catch (error) {
+          console.error("There was an error archiving the crime:", error);
+        }
+      } else {
+        try {
+          const response = await axios.post(
+            "https://p-wagon-backend.vercel.app/api/unarchiveCrime",
+            { crimeId }
+          );
+          if (response.status === 200) {
+            const index = crimeIds.indexOf(crimeId);
+            const newStatuses = [...crimeStatusus];
+            newStatuses[index] = true;
+            setCrimeStatuses(newStatuses);
+            console.log("Crime unarchived successfully")
+          }
+        } catch (error) {
+          console.error("There was an error unarchiving the crime:", error);
+        }
+      }
+    }
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -104,7 +144,7 @@ const CrimesTable: React.FC = () => {
           </Thead>
           <Tbody>
   {crimes.map((crime, index) => (
-    <Tr key={index} className="bg-black text-white text-center">
+    <Tr key={crimeIds[index]} id={crimeIds[index]} className="bg-black text-white text-center">
       <Td>{crime.description}</Td>
       <Td>{crime.details.license}</Td>
       <Td>{crime.details.color}</Td>
@@ -124,13 +164,11 @@ const CrimesTable: React.FC = () => {
       </Td>
       <Td
         onClick={() => {
-          const updatedCrimes = [...crimes];
-          updatedCrimes[index].status = !updatedCrimes[index].status;
-          setCrimes(updatedCrimes);
+          handleArchiveCrime(crimeIds[index], index);
         }}
                   style={{ cursor: "pointer" }}
                 >
-                  {crime.status ? "Active" : "Inactive"}
+                  {crimeStatusus[index] ? "Active" : "Inactive"}
                 </Td>
               </Tr>
             ))}
