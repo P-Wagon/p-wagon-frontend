@@ -6,7 +6,7 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Homepage from "./homepage/page";
 import { Button } from "@chakra-ui/react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
-import BackgroundCircles from "../../components/BackgroundCircles";
+import BackgroundCircles from "./BackgroundCircles";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true); // Initial loading state
@@ -50,36 +50,55 @@ const Home = () => {
   return (
     <>
       {isLoading ? (
-        <div className="h-screen flex items-center justify-center [background:radial-gradient(150%_150%_at_50%_10%,#000_40%,#253733_100%)]">
+        <div className="h-screen flex flex-col -space-y-2 items-center justify-center text-center overflow-hidden z-500 bg-neutral-950 bg-[radial-gradient(circle_farthest-side,rgba(37,55,51.15),rgba(255,255,255,0))]">
+          {" "}
           <p>Loading...</p>
         </div>
       ) : user ? (
         <Homepage />
       ) : (
         <>
-          <div className="h-screen flex flex-col -space-y-2 items-center justify-center text-center overflow-hidden z-500 bg-[#000B18] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+          <div className="h-screen flex flex-col -space-y-2 items-center justify-center text-center overflow-hidden z-500 bg-neutral-950 bg-[radial-gradient(circle_farthest-side,rgba(37,55,51.15),rgba(255,255,255,0))]">
             <BackgroundCircles />
-
+            <div className="absolute top-0 bg-[rgb(0,0,0,0)] w-full h-[10vh] flex flex-row items-center justify-around">
+              <img
+                className="flex object-contain h-[8vh] absolute left-0 ml-5 mt-5"
+                src="https://cdn.discordapp.com/attachments/894801439992475768/1218489323402432562/pwagon_logo.png?ex=6607d99d&is=65f5649d&hm=cf6970ad70eb44c6c06e368c66637495aa53ea2501fe5d64a4b7d321c0ab32d8&"
+              ></img>
+              <div className="absolute right-0 mr-7 mt-5">
+                <Button
+                  onClick={signInWithGoogle}
+                  onMouseEnter={handleHover}
+                  onMouseLeave={handleHover}
+                  style={{
+                    border: "1px solid #00D094",
+                    background: isHovered ? "#00D094" : "transparent",
+                    color: isHovered ? "black" : "white",
+                  }}
+                >
+                  SIGN IN
+                </Button>
+              </div>
+            </div>
             <div className="z-20">
               <h1 className="text-4xl sm:text-5xl font-semibold px-18 text-white">
                 <span>{text}</span>
                 <Cursor cursorColor="red" />{" "}
               </h1>
-            </div>
-
-            <div className="mt-4">
-              <Button
-                onClick={signInWithGoogle}
-                onMouseEnter={handleHover}
-                onMouseLeave={handleHover}
-                style={{
-                  border: "1px solid yellow",
-                  background: isHovered ? "yellow" : "transparent",
-                  color: isHovered ? "black" : "white",
-                }}
-              >
-                SIGN IN
-              </Button>
+              {/* <div className="mt-10">
+                  <Button 
+                    onClick={signInWithGoogle}
+                    onMouseEnter={handleHover}
+                    onMouseLeave={handleHover}
+                    style={{
+                      border: "1px solid #00D094",
+                      background: isHovered ? "#00D094" : "transparent",
+                      color: isHovered ? "black" : "white",
+                    }}
+                  >
+                    SIGN IN
+                  </Button>
+                </div> */}
             </div>
           </div>
         </>
