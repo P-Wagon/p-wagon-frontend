@@ -115,8 +115,8 @@ function ModalFormInput({ onSubmit }: ErrorMessageProps) {
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
         style={{
-          border: "1px solid yellow",
-          background: isHovered ? "yellow" : "transparent",
+          border: "1px solid #00D094",
+          background: isHovered ? "#00D094" : "transparent",
           color: isHovered ? "black" : "white",
           alignItems: "center",
         }}

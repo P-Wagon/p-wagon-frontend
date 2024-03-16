@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect, Fragment } from "react";
 import { signOut } from "firebase/auth";
 import auth from "../firebase/config";
@@ -28,33 +28,32 @@ const Homepage: React.FC = () => {
   return (
     <>
       <Fragment>
-        <div className="flex flex-col items-center justify-center h-screen w-screen bg-[#000B18] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
-          <div className="w-full text-center py-4 absolute top-0">
-            <h1
-              className="text-4xl font-bold text-white pwagon-font"
-              style={{
-                fontFamily: "ActionIs",
-                textShadow: "5px 5px 5px rgba(0, 0, 0, 1)",
-                WebkitTextStroke: "1px black",
-                WebkitTextFillColor: "white",
-              }}
-            >
-              PWagon
-            </h1>{" "}
+        <div className="h-screen flex flex-col -space-y-2 items-center justify-center text-center overflow-hidden z-500 bg-neutral-950 bg-[radial-gradient(circle_farthest-side,rgba(37,55,51.15),rgba(255,255,255,0))]">
+          <div className="absolute top-0 bg-[rgb(0,0,0,0)] w-full h-[10vh] flex flex-row items-center justify-around">
+            <img
+              className="flex object-contain h-[8vh] absolute left-0 ml-5 mt-5"
+              src="https://cdn.discordapp.com/attachments/894801439992475768/1218489323402432562/pwagon_logo.png?ex=6607d99d&is=65f5649d&hm=cf6970ad70eb44c6c06e368c66637495aa53ea2501fe5d64a4b7d321c0ab32d8&"
+            ></img>
+            <div className="absolute right-0 mr-7 mt-5">
+              <button
+                onClick={logOut}
+                className="px-4 py-2 bg-transparent border-1 border-[#00D094] text-[#FF0000] text-lg rounded-md flex items-center"
+              >
+                <Icon
+                  as={FiLogOut}
+                  boxSize={8}
+                  color="#FF0000"
+                  className="mr-2"
+                />
+                LOG OUT
+              </button>
+            </div>
           </div>
           <div className="text-gray-50 overflow-auto max-h-[70vh] mt-24">
             <CrimesTable />
           </div>
-          <div className="flex flex-col">
-            <button
-              onClick={logOut}
-              className="px-4 py-2 bg-transparent border-1 border-[#00D094] text-white rounded-md absolute top-20 right-5 sm:right-10"
-            >
-              <Icon as={FiLogOut} boxSize={6} color="red"/>
-            </button>
-            <div className="absolute top-24 left-5 sm:left-10">
-              <ModalFormInput />
-            </div>
+          <div className="absolute top-24">
+            <ModalFormInput />
           </div>
         </div>
       </Fragment>

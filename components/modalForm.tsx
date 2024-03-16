@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, useDisclosure } from '@chakra-ui/react';
-import ModalFormInput from './modalFormInput';
+import React, { useState } from "react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  useDisclosure,
+} from "@chakra-ui/react";
+import ModalFormInput from "./modalFormInput";
 
 function ModalForm() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const handleSubmit = (values: { description: string; color: string; plateNo: string; estimatedTime: string }) => {
+  const handleSubmit = (values: {
+    description: string;
+    color: string;
+    plateNo: string;
+    estimatedTime: string;
+  }) => {
     console.log(values);
     onClose();
   };
@@ -23,9 +38,9 @@ function ModalForm() {
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
         style={{
-          border: '1px solid yellow',
-          background: isHovered ? 'yellow' : 'transparent',
-          color: isHovered ? 'black' : 'white',
+          border: "1px solid #00D094",
+          background: isHovered ? "#00D094" : "transparent",
+          color: isHovered ? "black" : "white",
         }}
       >
         SEND ALERT
@@ -43,12 +58,9 @@ function ModalForm() {
             <ModalHeader>Send Alert</ModalHeader>
             <ModalCloseButton color="white" />
             <ModalBody>
-              <ModalFormInput
-                onSubmit={handleSubmit}
-              />
+              <ModalFormInput onSubmit={handleSubmit} />
             </ModalBody>
-            <ModalFooter>
-            </ModalFooter>
+            <ModalFooter></ModalFooter>
           </ModalContent>
         </Modal>
       </div>

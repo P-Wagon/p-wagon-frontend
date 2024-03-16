@@ -1,0 +1,58 @@
+::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: yellow;
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: black;
+    border-radius: 5px;
+  }
+
+  .w-full {
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .bg-black {
+    background-color: rgb(0,0,0,0.3);
+  }
+  .text-white {
+    color: white;
+  }
+
+.bg-yellow {
+  background-color: #00D094;
+}
+.text-white {
+  color: white;
+}
+
+.chakra-table {
+  border: none;
+}
+
+.chakra-table thead th {
+  border-bottom: none;
+  font-weight: bold;
+  color: black;
+}
+
+.chakra-table tbody tr {
+  border-bottom: none;
+}
+
+.chakra-table td,
+.chakra-table th {
+  border-bottom: none;
+  text-align: center;
+
+}
+
+.chakra-table tbody tr:nth-child(odd) {
+  background-color: black;
+}
+  

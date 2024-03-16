@@ -4,7 +4,7 @@ import auth from "./firebase/config";
 import { useRouter } from "next/navigation";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import Homepage from "./homepage/page";
-import { Button } from "@chakra-ui/react";
+import { Button, Spinner } from "@chakra-ui/react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 
@@ -52,7 +52,7 @@ const Home = () => {
       {isLoading ? (
         <div className="h-screen flex flex-col -space-y-2 items-center justify-center text-center overflow-hidden z-500 bg-neutral-950 bg-[radial-gradient(circle_farthest-side,rgba(37,55,51.15),rgba(255,255,255,0))]">
           {" "}
-          <p>Loading...</p>
+          <Spinner size="xl" color="white"/>
         </div>
       ) : user ? (
         <Homepage />

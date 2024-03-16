@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { Icon } from "@chakra-ui/react";
 import { FaSync } from "react-icons/fa";
-import "./CustomScrollbar.css";
+import "./dataTable.css";
 
 interface CrimeDetails {
   color: string;
@@ -68,13 +68,13 @@ const CrimesTable: React.FC = () => {
   return (
     <Flex direction="row" alignItems="top">
       {loading ? (
-        <Spinner size="sm" color="yellow" mr={4} mt={3} />
+        <Spinner size="sm" color="#00D094" mr={4} mt={3} />
       ) : (
         <Icon
           as={FaSync}
           onClick={handleReload}
           boxSize={4}
-          color="yellow"
+          color="#00D094"
           cursor="pointer"
           mr={4}
           mt={3}
