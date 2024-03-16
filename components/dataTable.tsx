@@ -65,6 +65,16 @@ const CrimesTable: React.FC = () => {
     fetchCrimes();
   };
 
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${day}-${month}-${year}, ${hours}:${minutes}`;
+  };
+
   return (
     <Flex direction="row" alignItems="top">
       {loading ? (
@@ -93,31 +103,31 @@ const CrimesTable: React.FC = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {crimes.map((crime, index) => (
-              <Tr key={index} className="bg-black text-white text-center">
-                <Td>{crime.description}</Td>
-                <Td>{crime.details.license}</Td>
-                <Td>{crime.details.color}</Td>
-                <Td>{crime.estimatedTime}</Td>
-                <Td>
-                  {crime.spottings ? (
-                    <ul>
-                      {Object.values(crime.spottings).map((spotting, index) => (
-                        <li key={index}>
-                          {spotting.location} - {spotting.timeStamp}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    "N/A"
-                  )}
-                </Td>
-                <Td
-                  onClick={() => {
-                    const updatedCrimes = [...crimes];
-                    updatedCrimes[index].status = !updatedCrimes[index].status;
-                    setCrimes(updatedCrimes);
-                  }}
+  {crimes.map((crime, index) => (
+    <Tr key={index} className="bg-black text-white text-center">
+      <Td>{crime.description}</Td>
+      <Td>{crime.details.license}</Td>
+      <Td>{crime.details.color}</Td>
+      <Td>{formatDate(crime.estimatedTime)}</Td>
+      <Td>
+        {crime.spottings ? (
+          <ul>
+            {Object.values(crime.spottings).map((spotting, index) => (
+              <li key={index}>
+                {spotting.location} - {spotting.timeStamp}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          "N/A"
+        )}
+      </Td>
+      <Td
+        onClick={() => {
+          const updatedCrimes = [...crimes];
+          updatedCrimes[index].status = !updatedCrimes[index].status;
+          setCrimes(updatedCrimes);
+        }}
                   style={{ cursor: "pointer" }}
                 >
                   {crime.status ? "Active" : "Inactive"}

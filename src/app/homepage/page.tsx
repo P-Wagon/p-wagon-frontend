@@ -52,7 +52,7 @@ const Homepage: React.FC = () => {
           <div className="text-gray-50 overflow-auto max-h-[70vh] mt-24">
             <CrimesTable />
           </div>
-          <div className="absolute top-24">
+          <div className="absolute top-28">
             <ModalFormInput />
           </div>
         </div>
