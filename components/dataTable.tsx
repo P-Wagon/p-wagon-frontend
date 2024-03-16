@@ -53,6 +53,7 @@ const CrimesTable: React.FC = () => {
       setCrimeIds(Object.keys(response.data));
       const crimesArray = Object.values(response.data);
       setCrimes(crimesArray);
+      setCrimeStatuses(crimesArray.map((crime) => crime.status));
       setLoading(false);
     } catch (error) {
       console.error("There was an error fetching the crimes:", error);
