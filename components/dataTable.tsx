@@ -112,7 +112,16 @@ const CrimesTable: React.FC = () => {
                     "N/A"
                   )}
                 </Td>
-                <Td>{crime.status ? "Active" : "Inactive"}</Td>
+                <Td
+                  onClick={() => {
+                    const updatedCrimes = [...crimes];
+                    updatedCrimes[index].status = !updatedCrimes[index].status;
+                    setCrimes(updatedCrimes);
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  {crime.status ? "Active" : "Inactive"}
+                </Td>
               </Tr>
             ))}
           </Tbody>
